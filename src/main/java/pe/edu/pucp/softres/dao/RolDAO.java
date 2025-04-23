@@ -9,9 +9,9 @@ import java.util.List;
  * @author frank
  */
 public interface RolDAO {
-    int insertar(RolDTO rol);
+    Integer insertar(RolDTO rol);
     RolDTO obtenerPorId(Integer id);
     List<RolDTO> listar();
-    int modificar(RolDTO rol);
-    int eliminar(RolDTO rol);
+    Integer modificar(RolDTO rol);
+    Integer eliminar(RolDTO rol);
 }

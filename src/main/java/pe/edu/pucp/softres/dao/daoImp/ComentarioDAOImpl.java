@@ -35,15 +35,15 @@ public class ComentarioDAOImpl implements ComentarioDAO{
         try {
             this.statement = this.conexion.prepareCall(sql);
             this.conexion.setAutoCommit(false);
-//            this.statement.setInt(1, comentario.getUsuarioId());
-//            this.statement.setInt(2, comentario.getReservaId());
-//            this.statement.setString(3, comentario.getMensaje());
-//            this.statement.setInt(4, comentario.getPuntuacion());
-//            this.statement.setBoolean(5, comentario.isEstado());
-//            this.statement.setTimestamp(6, comentario.getFechaCreacion());
-//            this.statement.setString(7, comentario.getUsuarioCreacion());
-//            this.statement.setTimestamp(8, comentario.getFechaModificacion());
-//            this.statement.setString(9, comentario.getUsuarioModificacion());
+            this.statement.setInt(1, comentario.getIdUsuario());
+            this.statement.setInt(2, comentario.getIdReserva());
+            this.statement.setString(3, comentario.getMensaje());
+            this.statement.setInt(4, comentario.getPuntuacion());
+            this.statement.setBoolean(5, comentario.getEstado());
+            this.statement.setObject(6, comentario.getFecha_creacion());
+            this.statement.setString(7, comentario.getUsuario_creacion());
+            this.statement.setObject(8, comentario.getFecha_modificacion());
+            this.statement.setString(9, comentario.getUsuario_modificacion());
 
             this.statement.executeUpdate();
             resultado = this.retornarUltimoAutoGenerado();
@@ -93,12 +93,12 @@ public class ComentarioDAOImpl implements ComentarioDAO{
     }
 
     @Override
-    public int modificar(ComentariosDTO comentario) {
+    public Integer modificar(ComentariosDTO comentario) {
         return 0;
     }
 
     @Override
-    public int eliminar(Integer comentario) {
+    public Integer eliminar(Integer comentario) {
         return 0;
     }
     

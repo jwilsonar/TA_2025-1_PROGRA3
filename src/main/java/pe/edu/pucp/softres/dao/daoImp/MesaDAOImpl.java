@@ -24,24 +24,24 @@ public class MesaDAOImpl implements MesaDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(MesaDTO mesa) {
+    public Integer insertar(MesaDTO mesa) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_MESAS(LOCAL_ID, TMESA_ID, NUMEROMESA, CAPACIDAD, ESTADO, X, Y, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             this.statement = this.conexion.prepareCall(sql);
             this.conexion.setAutoCommit(false);
-//            this.statement.setInt(1, mesa.getLocalId());
-//            this.statement.setInt(2, mesa.getTmesaId());
-//            this.statement.setString(3, mesa.getNumeroMesa());
-//            this.statement.setInt(4, mesa.getCapacidad());
-//            this.statement.setString(5, mesa.getEstado()); // 'DISPONIBLE', 'RESERVADA', etc.
-//            this.statement.setInt(6, mesa.getX());
-//            this.statement.setInt(7, mesa.getY());
-//            this.statement.setTimestamp(8, mesa.getFechaCreacion());
-//            this.statement.setString(9, mesa.getUsuarioCreacion());
-//            this.statement.setTimestamp(10, mesa.getFechaModificacion());
-//            this.statement.setString(11, mesa.getUsuarioModificacion());
+            this.statement.setInt(1, mesa.getIdLocal());
+            this.statement.setInt(2, mesa.getIdMesa());
+            this.statement.setString(3, mesa.getNumeroMesa());
+            this.statement.setInt(4, mesa.getCapacidad());
+            this.statement.setString(5, mesa.getEstado().name());
+            this.statement.setInt(6, mesa.getX());
+            this.statement.setInt(7, mesa.getY());
+            this.statement.setObject(8, mesa.getFecha_creacion());
+            this.statement.setString(9, mesa.getUsuario_creacion());
+            this.statement.setObject(10, mesa.getFecha_modificacion());
+            this.statement.setString(11, mesa.getUsuario_modificacion());
 
             this.statement.executeUpdate();
             resultado = this.retornarUltimoAutoGenerado();
@@ -91,12 +91,12 @@ public class MesaDAOImpl implements MesaDAO{
     }
 
     @Override
-    public int modificar(MesaDTO mesa) {
+    public Integer modificar(MesaDTO mesa) {
          return 0;
     }
 
     @Override
-    public int eliminar(Integer mesa) {
+    public Integer eliminar(Integer mesa) {
         return 0;
     }
 

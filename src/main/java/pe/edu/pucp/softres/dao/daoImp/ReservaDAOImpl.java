@@ -23,7 +23,7 @@ public class ReservaDAOImpl implements ReservaDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(ReservaDTO reserva) {
+    public Integer insertar(ReservaDTO reserva) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_RESERVAS(USUARIO_ID, LOCAL_ID, FECHA_HORA_REGISTRO, CANT_PERSONAS, TMESA_ID, NUM_MESAS, DURACION_ESTIMADA, OBSERVACIONES, MOTIVO_CANCELACION, CONFIRMACION_EMAIL, ESTADO, NOMBRE_EVENTO, DESCP_EVENTO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -31,23 +31,23 @@ public class ReservaDAOImpl implements ReservaDAO{
         try {
             this.statement = this.conexion.prepareCall(sql);
             this.conexion.setAutoCommit(false);
-//            this.statement.setInt(1, reserva.getUsuarioId());
-//            this.statement.setInt(2, reserva.getLocalId());
-//            this.statement.setTimestamp(3, reserva.getFechaHoraRegistro());
-//            this.statement.setInt(4, reserva.getCantPersonas());
-//            this.statement.setInt(5, reserva.getTmesaId());
-//            this.statement.setInt(6, reserva.getNumMesas());
-//            this.statement.setInt(7, reserva.getDuracionEstimada());
-//            this.statement.setString(8, reserva.getObservaciones());
-//            this.statement.setString(9, reserva.getMotivoCancelacion());
-//            this.statement.setBoolean(10, reserva.isConfirmacionEmail());
-//            this.statement.setString(11, reserva.getEstado()); // Asumiendo que es tipo ENUM
-//            this.statement.setString(12, reserva.getNombreEvento());
-//            this.statement.setString(13, reserva.getDescEvento());
-//            this.statement.setTimestamp(14, reserva.getFechaCreacion());
-//            this.statement.setString(15, reserva.getUsuarioCreacion());
-//            this.statement.setTimestamp(16, reserva.getFechaModificacion());
-//            this.statement.setString(17, reserva.getUsuarioModificacion());
+            this.statement.setInt(1, reserva.getIdUsuario());
+            this.statement.setInt(2, reserva.getIdLocal());
+            this.statement.setObject(3, reserva.getFecha_Hora());
+            this.statement.setInt(4, reserva.getCantidad_personas());
+            this.statement.setInt(5, reserva.getIdTipoMesa());
+            this.statement.setInt(6, reserva.getNumeroMesas());
+            this.statement.setInt(7, reserva.getDuracionEstimada());
+            this.statement.setString(8, reserva.getObservaciones());
+            this.statement.setString(9, reserva.getMotivoCancelacion());
+            this.statement.setBoolean(10, reserva.getConfirmacionEmail());
+            this.statement.setString(11, reserva.getEstado().name());
+            this.statement.setString(12, reserva.getNombreEvento());
+            this.statement.setString(13, reserva.getDescripcionEvento());
+            this.statement.setObject(14, reserva.getFecha_creacion());
+            this.statement.setString(15, reserva.getUsuario_creacion());
+            this.statement.setObject(16, reserva.getFecha_modificacion());
+            this.statement.setString(17, reserva.getUsuario_modificacion());
 
             this.statement.executeUpdate();
             resultado = this.retornarUltimoAutoGenerado();
@@ -97,17 +97,17 @@ public class ReservaDAOImpl implements ReservaDAO{
     }
 
     @Override
-    public int modificar(ReservaDTO reserva) {
+    public Integer modificar(ReservaDTO reserva) {
         return 0;
     }
 
     @Override
-    public int eliminar(Integer reserva, String motivo) {
+    public Integer eliminar(Integer reserva, String motivo) {
         return 0;
     }
 
     @Override
-    public int asignarMesas(ReservaDTO reserva) {
+    public Integer asignarMesas(ReservaDTO reserva) {
          return 0;
     }
     

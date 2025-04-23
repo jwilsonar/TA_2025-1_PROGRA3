@@ -23,22 +23,22 @@ public class HorarioAtencionDAOImpl implements HorarioAtencionDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(HorarioAtencionDTO horarioAtencion) {
+    public Integer insertar(HorarioAtencionDTO horarioAtencion) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_HORARIOS_ATENCION(DIA_SEMANA, HORA_INI, HORA_FIN, ES_FERIADO, ESTADO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (?,?,?,?,?,?,?,?,?)";
         try {
             this.statement = this.conexion.prepareCall(sql);
             this.conexion.setAutoCommit(false);
-//            this.statement.setString(1, horarioAtencion.getDiaSemana());
-//            this.statement.setTimestamp(2, horarioAtencion.getHoraIni());
-//            this.statement.setTimestamp(3, horarioAtencion.getHoraFin());
-//            this.statement.setBoolean(4, horarioAtencion.isEsFeriado());
-//            this.statement.setBoolean(5, horarioAtencion.isEstado());
-//            this.statement.setTimestamp(6, horarioAtencion.getFechaCreacion());
-//            this.statement.setString(7, horarioAtencion.getUsuarioCreacion());
-//            this.statement.setTimestamp(8, horarioAtencion.getFechaModificacion());
-//            this.statement.setString(9, horarioAtencion.getUsuarioModificacion());
+            this.statement.setString(1, horarioAtencion.getDiaSemana().name());
+            this.statement.setObject(2, horarioAtencion.getHoraInicio());
+            this.statement.setObject(3, horarioAtencion.getHoraFin());
+            this.statement.setBoolean(4, horarioAtencion.getEsFeriado());
+            this.statement.setBoolean(5, horarioAtencion.getEstado());
+            this.statement.setObject(6, horarioAtencion.getFecha_creacion());
+            this.statement.setString(7, horarioAtencion.getUsuario_creacion());
+            this.statement.setObject(8, horarioAtencion.getFecha_modificacion());
+            this.statement.setString(9, horarioAtencion.getUsuario_modificacion());
 
             this.statement.executeUpdate();
             resultado = this.retornarUltimoAutoGenerado();
@@ -88,12 +88,12 @@ public class HorarioAtencionDAOImpl implements HorarioAtencionDAO{
     }
 
     @Override
-    public int modificar(HorarioAtencionDTO horario) {
+    public Integer modificar(HorarioAtencionDTO horario) {
         return 0;
     }
 
     @Override
-    public int eliminar(Integer horario) {
+    public Integer eliminar(Integer horario) {
         return 0;
     }
     

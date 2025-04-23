@@ -22,7 +22,7 @@ public class TipoDocumentoDAOImpl implements TipoDocumentoDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(TipoDocumentoDTO tipoDocumento) {
+    public Integer insertar(TipoDocumentoDTO tipoDocumento) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_TIPO_DOCUMENTOS(NOMBRE) VALUES (?)";
@@ -80,12 +80,12 @@ public class TipoDocumentoDAOImpl implements TipoDocumentoDAO{
     }
 
     @Override
-    public int modificar(TipoDocumentoDTO tipoDocumento) {
+    public Integer modificar(TipoDocumentoDTO tipoDocumento) {
         return 0;
     }
 
     @Override
-    public int eliminar(TipoDocumentoDTO tipoDocumento) {
+    public Integer eliminar(TipoDocumentoDTO tipoDocumento) {
         return 0;
     }
     

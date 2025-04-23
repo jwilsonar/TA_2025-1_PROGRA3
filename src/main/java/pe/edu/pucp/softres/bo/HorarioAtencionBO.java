@@ -25,8 +25,8 @@ public class HorarioAtencionBO {
         horarioAtencion.setHoraFin(horaFin);
         horarioAtencion.setEsFeriado(esFeriado != null ? esFeriado : false);
         horarioAtencion.setEstado(true);
-        //horarioAtencion.setFecha_creacion(LocalDateTime.now());
-        //horarioAtencion.setUsuario_creacion(usuarioCreacion);
+        horarioAtencion.setFecha_creacion(LocalDateTime.now());
+        horarioAtencion.setUsuario_creacion(usuarioCreacion);
         return this.horarioAtencionDAO.insertar(horarioAtencion);
     }
 
@@ -46,8 +46,8 @@ public class HorarioAtencionBO {
         horarioAtencion.setHoraFin(horaFin);
         horarioAtencion.setEsFeriado(esFeriado);
         horarioAtencion.setEstado(true); // Se asume que sigue activo
-        //horarioAtencion.setFecha_modificacion(LocalDateTime.now());
-        //horarioAtencion.setUsuario_modificacion(usuarioModificacion);
+        horarioAtencion.setFecha_modificacion(LocalDateTime.now());
+        horarioAtencion.setUsuario_modificacion(usuarioModificacion);
         return this.horarioAtencionDAO.modificar(horarioAtencion);
     }
 

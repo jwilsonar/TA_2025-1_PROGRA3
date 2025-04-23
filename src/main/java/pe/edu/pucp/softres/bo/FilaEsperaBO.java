@@ -1,5 +1,6 @@
 package pe.edu.pucp.softres.bo;
 
+import java.time.LocalDateTime;
 import pe.edu.pucp.softres.dao.FilaEsperaDAO;
 import pe.edu.pucp.softres.dao.daoImp.FilaEsperaDAOImpl;
 import pe.edu.pucp.softres.model.FilaEsperaDTO;
@@ -17,13 +18,13 @@ public class FilaEsperaBO {
 
     public Integer insertar(Integer idUsuario, Integer idReserva, Integer idEstadoFila, String usuarioCreacion) {
         FilaEsperaDTO fila = new FilaEsperaDTO();
-//        fila.setIdUsuario(idUsuario);
-//        fila.setIdReserva(idReserva);
+        fila.setIdUsuario(idUsuario);
+        fila.setIdReserva(idReserva);
 //        fila.setEstado(new EstadoFilaEspera(idEstadoFila));
-//        fila.setFecha_creacion(LocalDateTime.now());
-//        fila.setUsuario_creacion(usuarioCreacion);
-//        fila.setFecha_modificacion(null);
-//        fila.setUsuario_modificacion(null);
+        fila.setFecha_creacion(LocalDateTime.now());
+        fila.setUsuario_creacion(usuarioCreacion);
+        fila.setFecha_modificacion(null);
+        fila.setUsuario_modificacion(null);
         return this.filaEsperaDAO.insertar(fila);
     }
 
@@ -39,8 +40,8 @@ public class FilaEsperaBO {
         FilaEsperaDTO fila = new FilaEsperaDTO();
         fila.setIdFila(filaId);
 //        fila.setEstado(new EstadoFilaEspera(idEstadoFila));
-//        fila.setFecha_modificacion(LocalDateTime.now());
-//        fila.setUsuario_modificacion(usuarioModificacion);
+        fila.setFecha_modificacion(LocalDateTime.now());
+        fila.setUsuario_modificacion(usuarioModificacion);
         return this.filaEsperaDAO.modificar(fila);
     }
 

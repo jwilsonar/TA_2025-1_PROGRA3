@@ -1,5 +1,6 @@
 package pe.edu.pucp.softres.bo;
 
+import java.time.LocalDateTime;
 import pe.edu.pucp.softres.dao.ComentarioDAO;
 import pe.edu.pucp.softres.dao.daoImp.ComentarioDAOImpl;
 import pe.edu.pucp.softres.model.ComentariosDTO;
@@ -17,13 +18,13 @@ public class ComentarioBO {
 
     public Integer insertar(Integer idUsuario, Integer idReserva, String mensaje, Integer puntuacion, String usuarioCreacion) {
         ComentariosDTO comentario = new ComentariosDTO();
-        //comentario.setIdUsuario(idUsuario);
-        //comentario.setIdReserva(idReserva);
+        comentario.setIdUsuario(idUsuario);
+        comentario.setIdReserva(idReserva);
         comentario.setMensaje(mensaje);
         comentario.setPuntuacion(puntuacion);
         comentario.setEstado(true);
-        //comentario.setFecha_creacion(LocalDateTime.now());
-        //comentario.setUsuario_creacion(usuarioCreacion);
+        comentario.setFecha_creacion(LocalDateTime.now());
+        comentario.setUsuario_creacion(usuarioCreacion);
         return this.comentarioDAO.insertar(comentario);
     }
 
@@ -40,8 +41,8 @@ public class ComentarioBO {
         comentario.setIdComentario(idComentario);
         comentario.setMensaje(mensaje);
         comentario.setPuntuacion(puntuacion);
-        //comentario.setFecha_modificacion(LocalDateTime.now());
-        //comentario.setUsuario_modificacion(usuarioModificacion);
+        comentario.setFecha_modificacion(LocalDateTime.now());
+        comentario.setUsuario_modificacion(usuarioModificacion);
         return this.comentarioDAO.modificar(comentario);
     }
 

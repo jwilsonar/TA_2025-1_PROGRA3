@@ -22,18 +22,18 @@ public class NotificacionDAOImpl implements NotificacionDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(NotificacionDTO notificacion) {
+    public Integer insertar(NotificacionDTO notificacion) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_NOTIFICACIONES(USUARIO_ID, MENSAJE, LEIDA, FECHA_CREACION, USUARIO_CREACION) VALUES (?,?,?,?,?)";
         try {
             this.statement = this.conexion.prepareCall(sql);
             this.conexion.setAutoCommit(false);
-//            this.statement.setInt(1, notificacion.getUsuarioId());
-//            this.statement.setString(2, notificacion.getMensaje());
-//            this.statement.setBoolean(3, notificacion.isLeida());
-//            this.statement.setTimestamp(4, notificacion.getFechaCreacion());
-//            this.statement.setString(5, notificacion.getUsuarioCreacion());
+            this.statement.setInt(1, notificacion.getIdUsuario());
+            this.statement.setString(2, notificacion.getMensaje());
+            this.statement.setBoolean(3, notificacion.getLeida());
+            this.statement.setObject(4, notificacion.getFecha_creacion());
+            this.statement.setString(5, notificacion.getUsuario_creacion());
 
             this.statement.executeUpdate();
             resultado = this.retornarUltimoAutoGenerado();
@@ -83,12 +83,12 @@ public class NotificacionDAOImpl implements NotificacionDAO{
     }
 
     @Override
-    public int modificar(NotificacionDTO notificacion) {
+    public Integer modificar(NotificacionDTO notificacion) {
         return 0;
     }
 
     @Override
-    public int eliminar(Integer notificacion) {
+    public Integer eliminar(Integer notificacion) {
          return 0;
     }
 

@@ -11,10 +11,10 @@ import java.util.List;
  * @author frank
  */
 public interface MesaDAO {
-    int insertar(MesaDTO mesa);
+    Integer insertar(MesaDTO mesa);
     MesaDTO obtenerPorId(Integer idMesa);
     List<MesaDTO> listar(MesaParametros parametros);
-    int modificar(MesaDTO mesa);
-    int eliminar(Integer mesaId);
+    Integer modificar(MesaDTO mesa);
+    Integer eliminar(Integer mesaId);
     List<MesaDTO> asignarMesas(ReservaDTO reserva);
 }

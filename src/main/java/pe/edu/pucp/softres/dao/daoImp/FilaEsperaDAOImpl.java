@@ -30,13 +30,13 @@ public class FilaEsperaDAOImpl implements FilaEsperaDAO{
         try {
             this.statement = this.conexion.prepareCall(sql);
             this.conexion.setAutoCommit(false);
-//            this.statement.setInt(1, filaEspera.getUsuarioId());
-//            this.statement.setInt(2, filaEspera.getReservaId());
-//            this.statement.setString(3, filaEspera.getEstado()); // 'PENDIENTE', 'NOTIFICADO', 'CANCELADO'
-//            this.statement.setTimestamp(4, filaEspera.getFechaCreacion());
-//            this.statement.setString(5, filaEspera.getUsuarioCreacion());
-//            this.statement.setTimestamp(6, filaEspera.getFechaModificacion());
-//            this.statement.setString(7, filaEspera.getUsuarioModificacion());
+            this.statement.setInt(1, filaEspera.getIdUsuario());
+            this.statement.setInt(2, filaEspera.getIdReserva());
+            this.statement.setString(3, filaEspera.getEstado().name());
+            this.statement.setObject(4, filaEspera.getFecha_creacion());
+            this.statement.setString(5, filaEspera.getUsuario_creacion());
+            this.statement.setObject(6, filaEspera.getFecha_modificacion());
+            this.statement.setString(7, filaEspera.getUsuario_modificacion());
 
             this.statement.executeUpdate();
             resultado = this.retornarUltimoAutoGenerado();
@@ -86,12 +86,12 @@ public class FilaEsperaDAOImpl implements FilaEsperaDAO{
     }
 
     @Override
-    public int modificar(FilaEsperaDTO filaEspera) {
+    public Integer modificar(FilaEsperaDTO filaEspera) {
         return 0;
     }
 
     @Override
-    public int eliminar(Integer filaEspera) {
+    public Integer eliminar(Integer filaEspera) {
         return 0;
     }
     

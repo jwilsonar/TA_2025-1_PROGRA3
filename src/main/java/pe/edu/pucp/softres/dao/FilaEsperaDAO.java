@@ -13,6 +13,6 @@ public interface FilaEsperaDAO {
     Integer insertar(FilaEsperaDTO filaEspera);
     FilaEsperaDTO obtenerPorId(Integer idFilaEspera);
     List<FilaEsperaDTO> listar(FilaEsperaParametros parametros);
-    int modificar(FilaEsperaDTO filaEspera);
-    int eliminar(Integer filaEsperaId);
+    Integer modificar(FilaEsperaDTO filaEspera);
+    Integer eliminar(Integer filaEsperaId);
 }

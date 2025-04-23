@@ -9,9 +9,9 @@ import java.util.List;
  * @author frank
  */
 public interface TipoDocumentoDAO {
-    int insertar(TipoDocumentoDTO tipoDocumento);
+    Integer insertar(TipoDocumentoDTO tipoDocumento);
     TipoDocumentoDTO obtenerPorId(Integer id);
     List<TipoDocumentoDTO> listar();
-    int modificar(TipoDocumentoDTO tipoDocumento);
-    int eliminar(TipoDocumentoDTO tipoDocumento);
+    Integer modificar(TipoDocumentoDTO tipoDocumento);
+    Integer eliminar(TipoDocumentoDTO tipoDocumento);
 }

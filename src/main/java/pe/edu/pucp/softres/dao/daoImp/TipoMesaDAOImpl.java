@@ -22,7 +22,7 @@ public class TipoMesaDAOImpl implements TipoMesaDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(TipoMesaDTO tipoMesa) {
+    public Integer insertar(TipoMesaDTO tipoMesa) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_TIPOS_MESAS(NOMBRE) VALUES (?)";
@@ -80,12 +80,12 @@ public class TipoMesaDAOImpl implements TipoMesaDAO{
     }
 
     @Override
-    public int modificar(TipoMesaDTO tipoMesa) {
+    public Integer modificar(TipoMesaDTO tipoMesa) {
         return 0;
     }
 
     @Override
-    public int eliminar(TipoMesaDTO tipoMesa) {
+    public Integer eliminar(TipoMesaDTO tipoMesa) {
         return 0;
     }
     

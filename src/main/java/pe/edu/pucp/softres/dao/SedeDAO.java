@@ -9,9 +9,9 @@ import java.util.List;
  * @author frank
  */
 public interface SedeDAO {
-    int insertar(SedeDTO sede);
+    Integer insertar(SedeDTO sede);
     SedeDTO obtenerPorId(Integer idSede);
     List<SedeDTO> listar(boolean estado);
-    int modificar(SedeDTO sede);
-    int eliminar(Integer sedeId);
+    Integer modificar(SedeDTO sede);
+    Integer eliminar(Integer sedeId);
 }

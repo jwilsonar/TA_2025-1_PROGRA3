@@ -22,7 +22,7 @@ public class SedeDAOImpl implements SedeDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(SedeDTO sede) {
+    public Integer insertar(SedeDTO sede) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_SEDES(NOMBRE, DISTRITO, ESTADO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (?,?,?,?,?,?,?)";
@@ -32,11 +32,11 @@ public class SedeDAOImpl implements SedeDAO{
             this.conexion.setAutoCommit(false);
             this.statement.setString(1, sede.getNombre());
             this.statement.setString(2, sede.getDistrito());
-//            this.statement.setBoolean(3, sede.isEstado());
-//            this.statement.setTimestamp(4, sede.getFechaCreacion());
-//            this.statement.setString(5, sede.getUsuarioCreacion());
-//            this.statement.setTimestamp(6, sede.getFechaModificacion());
-//            this.statement.setString(7, sede.getUsuarioModificacion());
+            this.statement.setBoolean(3, sede.getEstado());
+            this.statement.setObject(4, sede.getFecha_creacion());
+            this.statement.setString(5, sede.getUsuario_creacion());
+            this.statement.setObject(6, sede.getFecha_modificacion());
+            this.statement.setString(7, sede.getUsuario_modificacion());
 
             this.statement.executeUpdate();
             resultado = this.retornarUltimoAutoGenerado();
@@ -86,12 +86,12 @@ public class SedeDAOImpl implements SedeDAO{
     }
 
     @Override
-    public int modificar(SedeDTO sede) {
+    public Integer modificar(SedeDTO sede) {
          return 0;
     }
 
     @Override
-    public int eliminar(Integer sede) {
+    public Integer eliminar(Integer sede) {
         return 0;
     }
     

@@ -23,23 +23,23 @@ public class LocalDAOImpl implements LocalDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(LocalDTO local) {
+    public Integer insertar(LocalDTO local) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_LOCALES(SEDE_ID, NOMBRE, DIRECCION, CAPACIDAD_TOTAL, TELEFONO, ESTADO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
             this.statement = this.conexion.prepareCall(sql);
             this.conexion.setAutoCommit(false);
-//            this.statement.setInt(1, local.getSedeId());
-//            this.statement.setString(2, local.getNombre());
-//            this.statement.setString(3, local.getDireccion());
-//            this.statement.setInt(4, local.getCapacidadTotal());
-//            this.statement.setString(5, local.getTelefono());
-//            this.statement.setBoolean(6, local.isEstado());
-//            this.statement.setTimestamp(7, local.getFechaCreacion());
-//            this.statement.setString(8, local.getUsuarioCreacion());
-//            this.statement.setTimestamp(9, local.getFechaModificacion());
-//            this.statement.setString(10, local.getUsuarioModificacion());
+            this.statement.setInt(1, local.getIdSede());
+            this.statement.setString(2, local.getNombre());
+            this.statement.setString(3, local.getDireccion());
+            this.statement.setInt(4, local.getCapacidadTotal());
+            this.statement.setString(5, local.getTelefono());
+            this.statement.setBoolean(6, local.getEstado());
+            this.statement.setObject(7, local.getFecha_creacion());
+            this.statement.setString(8, local.getUsuario_creacion());
+            this.statement.setObject(9, local.getFecha_modificacion());
+            this.statement.setString(10, local.getUsuario_modificacion());
 
             this.statement.executeUpdate();
             resultado = this.retornarUltimoAutoGenerado();
@@ -89,12 +89,12 @@ public class LocalDAOImpl implements LocalDAO{
     }
 
     @Override
-    public int modificar(LocalDTO local) {
+    public Integer modificar(LocalDTO local) {
         return 0;
     }
 
     @Override
-    public int eliminar(LocalDTO local) {
+    public Integer eliminar(LocalDTO local) {
         return 0;
     }
     

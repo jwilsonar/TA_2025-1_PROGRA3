@@ -22,7 +22,7 @@ public class RolDAOImpl implements RolDAO{
     private ResultSet resultSet;
     
     @Override
-    public int insertar(RolDTO rol) {
+    public Integer insertar(RolDTO rol) {
         Integer resultado = 0;
         this.conexion = DBManager.getInstance().getConnection();
         String sql = "INSERT INTO RES_ROLES(NOMBRE) VALUES (?)";
@@ -80,12 +80,12 @@ public class RolDAOImpl implements RolDAO{
     }
 
     @Override
-    public int modificar(RolDTO rol) {
+    public Integer modificar(RolDTO rol) {
         return 0;
     }
 
     @Override
-    public int eliminar(RolDTO rol) {
+    public Integer eliminar(RolDTO rol) {
         return 0;
     }
     

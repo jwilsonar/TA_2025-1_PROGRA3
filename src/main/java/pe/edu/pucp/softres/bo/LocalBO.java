@@ -17,14 +17,14 @@ public class LocalBO {
 
     public Integer insertar(Integer idSede, String direccion, String nombre, Integer capacidadTotal, String telefono, String usuarioCreacion) {
         LocalDTO local = new LocalDTO();
-        //local.setIdSede(idSede);
+        local.setIdSede(idSede);
         local.setDireccion(direccion);
         local.setNombre(nombre);
         local.setCapacidadTotal(capacidadTotal);
         local.setTelefono(telefono);
         local.setEstado(true); // Se activa por defecto
-//        local.setFecha_creacion(LocalDateTime.now());
-//        local.setUsuario_creacion(usuarioCreacion);
+        local.setFecha_creacion(LocalDateTime.now());
+        local.setUsuario_creacion(usuarioCreacion);
         return this.localDAO.insertar(local);
     }
 
@@ -37,7 +37,7 @@ public class LocalBO {
     }
 
     public Integer modificar(LocalDTO local) {
-        //local.setFecha_modificacion(LocalDateTime.now()); 
+        local.setFecha_modificacion(LocalDateTime.now()); 
         return this.localDAO.modificar(local);
     }
 
